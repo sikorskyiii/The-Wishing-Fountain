@@ -9,46 +9,45 @@
       --bg:#0a0a0a;
       --fg:#e6e6e6;
       --muted:#9a9a9a;
-      --red1:#c1121f;  
+      --red1:#c1121f;   
       --red2:#7a0b12;   
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      background:radial-gradient(1000px 600px at 50% -100px, #1a0b0d 0%, #0a0a0a 55%);
+      background:radial-gradient(1000px 600px at 50% 0px, #1a0b0d 0%, #0a0a0a 60%);
       color:var(--fg);
       font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
       display:grid;
-      place-items:center;             
-      padding:20px;                  
+      place-items:center;
+      padding:20px;
     }
-
     .card{
       width:min(860px, 100%);
-      background:linear-gradient(180deg, #0f0a0b 0%, #12090b 60%, #0e0a0b 100%);
+      background:linear-gradient(180deg, #100a0b 0%, #13090b 60%, #0f0a0b 100%);
       border:1px solid rgba(193,18,31,.45);
       border-radius:16px;
       padding:28px 22px 40px;
       box-shadow:
-        0 2px 0 rgba(255,255,255,0.03) inset,
-        0 -2px 0 rgba(0,0,0,0.4) inset,
-        0 14px 0 rgba(122,11,18,0.8),
-        0 28px 36px rgba(0,0,0,0.65),
-        0 0 120px rgba(193,18,31,0.15);
+        0 1px 0 rgba(255,255,255,0.05) inset,
+        0 -2px 0 rgba(0,0,0,0.35) inset,
+        14px 16px 0 rgba(122,11,18,0.75),       
+        26px 34px 42px rgba(0,0,0,0.65),           
+        0 0 90px rgba(193,18,31,0.14);
       position:relative;
       transform:translateZ(0);
     }
     .card::after{
       content:"";
-      position:absolute; inset:0 0 auto 0; height:60px;
+      position:absolute; inset:0 0 auto 0; height:56px;
       background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
       border-radius:16px 16px 0 0;
       pointer-events:none;
     }
 
     h1{
-      margin:0 0 32px;            
+      margin:0 0 28px; 
       font-size:28px;
       letter-spacing:.2px;
       text-align:center;
@@ -69,24 +68,22 @@
       cursor:pointer;
       transition:color .2s ease, text-shadow .2s ease;
     }
-    .hotword:hover{
-      color:var(--red1);
-      text-shadow:0 0 8px rgba(193,18,31,.35);
-    }
-
     .quote{
-      margin:18px 0;
+      margin:18px auto;
       padding:14px 16px;
+      max-width:720px;
       border-radius:10px;
       background:linear-gradient(135deg, var(--red1), var(--red2));
       color:#fff;
       font-style:italic;
-      border:1px solid rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.12);
       box-shadow:
-        0 1px 0 rgba(255,255,255,0.15) inset,
-        0 -2px 0 rgba(0,0,0,0.35) inset,
-        0 10px 0 rgba(122,11,18,0.8),
-        0 24px 34px rgba(0,0,0,0.55);
+        0 1px 0 rgba(255,255,255,0.18) inset,
+        0 -3px 0 rgba(0,0,0,0.38) inset,
+        10px 12px 0 rgba(122,11,18,0.85),     
+        22px 28px 36px rgba(0,0,0,0.55),          
+        0 0 28px rgba(193,18,31,0.25);
+      text-align:center;
     }
   </style>
 </head>
