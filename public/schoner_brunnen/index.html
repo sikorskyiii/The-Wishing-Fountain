@@ -6,21 +6,65 @@
   <title>Wishing Ring — lattice gallery</title>
   <meta name="description" content="Find the right lattice among many fountains." />
   <style>
-    :root{--bg:#0a0a0a;--fg:#e6e6e6}
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif}
-    .wrap{max-width:1100px;margin:0 auto;padding:44px 20px}
-    h1{margin:0 0 10px;font-size:26px}
-    p{margin:0 0 14px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:16px}
-    .item img{display:block;width:100%;height:auto;border-radius:6px;cursor:pointer;object-fit:cover}
-    .cap{padding:4px 6px;font-size:13px;color:#999;text-align:center}
+    :root{
+      --bg:#0a0a0a;
+      --fg:#e6e6e6;
+      --muted:#9a9a9a;
+      --red:#c1121f;
+      --red-dim:#7a0b12;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      background:var(--bg);
+      color:var(--fg);
+      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
+    }
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:44px 20px;
+    }
+    h1{
+      margin-bottom:10px;
+      font-size:26px;
+    }
+    p{margin-bottom:14px}
+    .muted{color:var(--muted)}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+      gap:12px;
+      margin-top:20px;
+    }
+    figure{
+      margin:0;
+      border:2px solid var(--red-dim);
+      border-radius:8px;
+      overflow:hidden;
+      transition:border-color .2s ease;
+      cursor:pointer;
+    }
+    figure.active{border-color:var(--red);}
+    img{
+      display:block;
+      width:100%;
+      height:auto;
+      object-fit:cover;
+      background:#111;
+    }
+    figcaption{
+      text-align:center;
+      font-size:13px;
+      color:var(--muted);
+      padding:6px 0 4px;
+    }
   </style>
 </head>
 <body>
   <main class="wrap">
     <h1>Find the ring</h1>
     <p>Three turns — one wish. Many fountains look alike; only one hides the right lattice.</p>
+    <p class="muted">Look closely — some things reveal themselves only to patience.</p>
 
     <section class="grid" id="gallery" aria-label="Fountain gallery"></section>
   </main>
@@ -33,21 +77,25 @@
         'fountain_08.jpg','fountain_09.jpg','fountain_10.jpg','fountain_11.jpg',
         'fountain_12.jpg','fountain_13.jpg','fountain_14.jpg'
       ];
-      // shuffle
-      for(let i=images.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[images[i],images[j]]=[images[j],images[i]];}
+      for(let i=images.length-1;i>0;i--){
+        const j=Math.floor(Math.random()*(i+1));
+        [images[i],images[j]]=[images[j],images[i]];
+      }
       const g=document.getElementById('gallery');
       images.forEach(name=>{
         const fig=document.createElement('figure');
-        fig.className='item';
         const img=document.createElement('img');
         img.loading='lazy';
         img.decoding='async';
         img.src=name;
         img.alt='Fountain';
         const cap=document.createElement('figcaption');
-        cap.className='cap'; cap.textContent='Fountain';
-        fig.appendChild(img); fig.appendChild(cap);
-        fig.onclick=()=>{ if(name==='fountain_15.jpg'){ window.location.href='../next_stage/'; } };
+        cap.textContent='Fountain';
+        fig.appendChild(img);
+        fig.appendChild(cap);
+        fig.onclick=()=>{
+          fig.classList.toggle('active');
+        };
         g.appendChild(fig);
       });
     })();
