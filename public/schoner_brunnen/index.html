@@ -9,9 +9,8 @@
     :root{
       --bg:#0a0a0a;
       --fg:#e6e6e6;
-      --muted:#9a9a9a;
       --red:#c1121f;
-      --red-dim:#7a0b12;
+      --muted:#9a9a9a;
     }
     *{box-sizing:border-box;margin:0;padding:0}
     body{
@@ -38,13 +37,11 @@
     }
     figure{
       margin:0;
-      border:2px solid var(--red-dim);
+      border:2px solid var(--red);
       border-radius:8px;
       overflow:hidden;
-      transition:border-color .2s ease;
-      cursor:pointer;
+      background:#0f0f12;
     }
-    figure.active{border-color:var(--red);}
     img{
       display:block;
       width:100%;
@@ -64,7 +61,7 @@
   <main class="wrap">
     <h1>Find the ring</h1>
     <p>Three turns — one wish. Many fountains look alike; only one hides the right lattice.</p>
-    <p class="muted">Look closely — some things reveal themselves only to patience.</p>
+    <p class="muted">All you have to do is look carefully.</p>
 
     <section class="grid" id="gallery" aria-label="Fountain gallery"></section>
   </main>
@@ -77,6 +74,7 @@
         'fountain_08.jpg','fountain_09.jpg','fountain_10.jpg','fountain_11.jpg',
         'fountain_12.jpg','fountain_13.jpg','fountain_14.jpg'
       ];
+      // shuffle
       for(let i=images.length-1;i>0;i--){
         const j=Math.floor(Math.random()*(i+1));
         [images[i],images[j]]=[images[j],images[i]];
@@ -93,9 +91,6 @@
         cap.textContent='Fountain';
         fig.appendChild(img);
         fig.appendChild(cap);
-        fig.onclick=()=>{
-          fig.classList.toggle('active');
-        };
         g.appendChild(fig);
       });
     })();
