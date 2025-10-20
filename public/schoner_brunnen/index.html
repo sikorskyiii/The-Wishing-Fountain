@@ -3,27 +3,120 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Wishing Ring — lattice</title>
-  <meta name="description" content="Three turns — one wish. Look closely at the lattice." />
+  <title>Wishing Ring — lattice gallery</title>
+  <meta name="description" content="Find the right lattice among many fountains." />
   <style>
-    :root{--bg:#0a0a0a;--fg:#e6e6e6;--muted:#9a9a9a;--red:#c1121f;--red-dim:#7a0b12}
+    :root{--bg:#0a0a0a;--fg:#e6e6e6;--muted:#9a9a9a;--red:#c1121f;--red-dim:#7a0b12;--ok:#18c29c}
     *{box-sizing:border-box}
     body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif}
-    .wrap{max-width:980px;margin:0 auto;padding:48px 20px}
-    h1{margin:0 0 14px;font-size:26px}
-    figure{margin:14px 0}
-    img{max-width:100%;height:auto;border-radius:10px;display:block;border:2px solid var(--red-dim);box-shadow:0 0 0 1px #000,0 0 24px rgba(193,18,31,.15)}
-    figcaption{color:var(--muted);margin-top:8px}
-    .accent{color:var(--red)}
+    .wrap{max-width:1100px;margin:0 auto;padding:44px 20px}
+    h1{margin:0 0 10px;font-size:26px}
+    p{margin:0 0 14px}
+    .muted{color:var(--muted)}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+      gap:16px;
+      margin-top:12px;
+    }
+    .item{
+      position:relative;
+      border:2px solid var(--red-dim);
+      border-radius:10px;
+      overflow:hidden;
+      background:#0f0f12;
+      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+      cursor:pointer;
+    }
+    .item:hover{transform:translateY(-2px);box-shadow:0 0 0 1px #000,0 0 24px rgba(193,18,31,.18)}
+    .item img{display:block;width:100%;height:180px;object-fit:cover}
+    .cap{padding:8px 10px;font-size:14px;color:var(--muted)}
+    .wrong{animation:shake .15s 2}
+    @keyframes shake {
+      0%{transform:translateX(0)}
+      25%{transform:translateX(-4px)}
+      50%{transform:translateX(4px)}
+      75%{transform:translateX(-3px)}
+      100%{transform:translateX(0)}
+    }
+    .toast{
+      position:fixed;left:50%;bottom:22px;transform:translateX(-50%);
+      background:#111; color:#fff; border:1px solid var(--ok);
+      padding:10px 14px;border-radius:8px;box-shadow:0 0 0 1px #000,0 8px 30px rgba(0,0,0,.35);
+      font-size:14px; opacity:0; pointer-events:none; transition:opacity .18s ease;
+    }
+    .toast.show{opacity:1}
+    .cap .accent{color:var(--red)}
   </style>
 </head>
 <body>
   <main class="wrap">
     <h1>Find the ring</h1>
-    <figure>
-      <img src="./wishing_ring.jpg" alt="Gothic lattice with a small golden ring hidden within">
-      <figcaption>Three turns — one wish. Then remember the name of the <span class="accent">observatory</span> that watches the sky.</figcaption>
-    </figure>
+    <p>Three turns — one wish. Many fountains look alike; only one hides the right lattice.</p>
+    <p class="muted">When you identify the correct one, remember: the true key is the <span class="accent">name of an observatory</span>.</p>
+
+    <section class="grid" id="gallery" aria-label="Fountain gallery"></section>
+    <div class="toast" id="toast" role="status" aria-live="polite">Right lattice found. Think of the observatory.</div>
   </main>
+
+  <script>
+    (function(){
+      var images = [
+        {src:'wishing_ring.jpg', alt:'Gothic lattice with a small golden ring', correct:true},
+        {src:'fountain_01.jpg', alt:'Stone fountain in a courtyard'},
+        {src:'fountain_02.jpg', alt:'Baroque fountain with statues'},
+        {src:'fountain_03.jpg', alt:'City square fountain at night'},
+        {src:'fountain_04.jpg', alt:'Tiered marble fountain'},
+        {src:'fountain_05.jpg', alt:'Modern steel fountain'},
+        {src:'fountain_06.jpg', alt:'Circular plaza fountain'},
+        {src:'fountain_07.jpg', alt:'Historic fountain with railings'},
+        {src:'fountain_08.jpg', alt:'Garden fountain among hedges'},
+        {src:'fountain_09.jpg', alt:'Fountain with basin and spout'},
+        {src:'fountain_10.jpg', alt:'Sunlit courtyard fountain'},
+        {src:'fountain_11.jpg', alt:'Stone fountain with arch'},
+        {src:'fountain_12.jpg', alt:'Fountain near cathedral'},
+        {src:'fountain_13.jpg', alt:'Decorative ironwork fountain'},
+        {src:'fountain_14.jpg', alt:'Fountain with sculptures'}
+      ];
+
+      for(let i=images.length-1;i>0;i--){
+        const j=Math.floor(Math.random()*(i+1));
+        [images[i],images[j]]=[images[j],images[i]];
+      }
+
+      var g=document.getElementById('gallery');
+      images.forEach(function(info){
+        var card=document.createElement('figure');
+        card.className='item';
+        card.setAttribute('tabindex','0');
+        var img=document.createElement('img');
+        img.src=info.src; img.alt=info.alt||'Fountain';
+        var cap=document.createElement('figcaption');
+        cap.className='cap';
+        cap.textContent='Fountain';
+        card.appendChild(img); card.appendChild(cap);
+        card.addEventListener('click',onPick);
+        card.addEventListener('keydown',function(e){ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); onPick.call(card,e);} });
+        card.dataset.correct = !!info.correct;
+        g.appendChild(card);
+      });
+
+      var toast=document.getElementById('toast');
+      function showToast(msg){
+        toast.textContent=msg; toast.classList.add('show');
+        setTimeout(function(){toast.classList.remove('show')},1400);
+      }
+
+      function onPick(){
+        if(this.dataset.correct==='true'){
+          this.style.borderColor='var(--ok)';
+          showToast('Right lattice found. Think of the observatory.');
+        }else{
+          this.classList.remove('wrong'); void this.offsetWidth; this.classList.add('wrong');
+          this.style.borderColor='var(--red)';
+        }
+      }
+    })();
+  </script>
 </body>
 </html>
