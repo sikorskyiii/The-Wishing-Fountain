@@ -15,27 +15,43 @@
     .hr{height:1px;background:linear-gradient(90deg,transparent,var(--red-dim),transparent);margin:18px 0 10px}
     .muted{color:var(--muted)}
     .hotword{color:inherit;text-decoration:none;cursor:pointer}
+    .quote{
+      margin:14px 0;
+      padding:12px 14px;
+      border:1px solid var(--red);
+      border-radius:8px;
+      background:rgba(193,18,31,0.06);
+      font-style:italic;
+    }
   </style>
 </head>
 <body>
   <main class="wrap">
     <h1>Some stories don’t begin with words — they begin with a ring</h1>
-    <p>They say the <em>Beautiful Fountain</em> wasn’t meant for this square. Centuries blurred the plans, yet a trace remains.</p>
-    <p>Hidden in the iron lattice is a small <a class="hotword" id="ring-word">ring</a>: three turns — one wish. But that’s only an entry, not the answer.</p>
+
+    <p>In the heart of Nuremberg’s main square stands the <em>Beautiful Fountain</em>, a 14-meter Gothic masterpiece born in the 14th century. Its carved figures reflect the ideals of faith, wisdom, and the rhythm of life — yet few remember it was never meant to stand here.</p>
+
+    <p>Somewhere within the city’s forgotten plans lies the name of the tower that turned it away. Beauty, they say, changed its fate.</p>
+
+    <p>Hidden in the fountain’s ornate iron lattice is a small golden <a class="hotword" id="ring-word">ring</a>, almost invisible at first glance.</p>
+
+    <div class="quote">“Turning the ring three times while making a wish is said to bring good luck.”</div>
+
+    <p>No one recalls who first said it — or whether it was ever true — but the legend endures. And like all good stories, it reaches beyond stone and time, leaving traces where few would think to look.</p>
+
     <div class="hr"></div>
-     <p class="muted">Find where to point your gaze, and the path continues.</p>
+    <p class="muted">Find where to point your gaze, and the path continues.</p>
   </main>
+
   <script>
     (function(){
-      var el=document.getElementById('ring-word'); var clicks=0; var timer=null;
-      function reset(){clicks=0; if(timer){clearTimeout(timer); timer=null;}}
+      var el=document.getElementById('ring-word');
+      var clicks=0, timer=null;
+      function reset(){ clicks=0; if(timer){ clearTimeout(timer); timer=null; } }
       el.addEventListener('click',function(){
         clicks++;
         if(clicks===1){ timer=setTimeout(reset,1200); }
-        if(clicks===3){
-          reset();
-          window.location.href='./schoner_brunnen/';
-        }
+        if(clicks===3){ reset(); window.location.href='./schoner_brunnen/'; }
       },{passive:true});
     })();
   </script>
