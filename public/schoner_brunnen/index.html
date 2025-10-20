@@ -6,10 +6,23 @@
   <title>Wishing Ring — lattice gallery</title>
   <meta name="description" content="Find the right lattice among many fountains." />
   <style>
-    :root{--bg:#0a0a0a;--fg:#e6e6e6;--red:#c1121f;--muted:#9a9a9a}
+    :root{
+      --bg:#0a0a0a;
+      --fg:#e6e6e6;
+      --red:#c1121f;
+      --muted:#9a9a9a;
+    }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif}
-    .wrap{max-width:1100px;margin:0 auto;padding:44px 20px}
+    body{
+      background:var(--bg);
+      color:var(--fg);
+      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
+    }
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:44px 20px;
+    }
     h1{margin-bottom:10px;font-size:26px}
     p{margin-bottom:14px}
     .muted{color:var(--muted)}
@@ -25,12 +38,26 @@
       border-radius:8px;
       overflow:hidden;
       background:#0f0f12;
-      content-visibility:auto;
-      contain-intrinsic-size: 300px 225px;
+      transition:transform .15s ease;
     }
-    .img-box{width:100%;aspect-ratio:4/3;background:#111}
-    img{display:block;width:100%;height:100%;object-fit:cover}
-    figcaption{text-align:center;font-size:13px;color:var(--muted);padding:6px 0 5px}
+    figure:hover{transform:translateY(-3px);}
+    .img-box{
+      width:100%;
+      aspect-ratio:4/3;
+      background:#111;
+    }
+    img{
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    figcaption{
+      text-align:center;
+      font-size:13px;
+      color:var(--muted);
+      padding:6px 0 5px;
+    }
   </style>
 </head>
 <body>
@@ -39,23 +66,38 @@
     <p>Three turns — one wish. Many fountains look alike; only one hides the right lattice.</p>
     <p class="muted">All you have to do is look carefully.</p>
 
-    <section class="grid" aria-label="Fountain gallery">
-      <figure><div class="img-box"><img src="fountain_01_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
-      <figure><div class="img-box"><img src="fountain_02_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
-      <figure><div class="img-box"><img src="fountain_03_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
-      <figure><div class="img-box"><img src="fountain_04_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
-      <figure><div class="img-box"><img src="fountain_05_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
-      <figure><div class="img-box"><img src="fountain_06_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
-      <figure><div class="img-box"><img src="fountain_07_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
-      <figure><div class="img-box"><img src="fountain_08_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
-      <figure><div class="img-box"><img src="fountain_09_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
-      <figure><div class="img-box"><img src="fountain_10_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
-      <figure><div class="img-box"><img src="fountain_11_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
-      <figure><div class="img-box"><img src="fountain_12_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
-      <figure><div class="img-box"><img src="fountain_13_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
-      <figure><div class="img-box"><img src="fountain_14_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
-      <figure><div class="img-box"><img src="fountain_15_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
-    </section>
+    <section class="grid" id="gallery" aria-label="Fountain gallery"></section>
   </main>
+
+  <script>
+    (function(){
+      const images = [
+        "fountain_01.jpg","fountain_02.jpg","fountain_03.jpg","fountain_04.jpg","fountain_05.jpg",
+        "fountain_06.jpg","fountain_07.jpg","fountain_08.jpg","fountain_09.jpg","fountain_10.jpg",
+        "fountain_11.jpg","fountain_12.jpg","fountain_13.jpg","fountain_14.jpg","fountain_15.jpg"
+      ];
+
+      for(let i = images.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [images[i], images[j]] = [images[j], images[i]];
+      }
+
+      const g = document.getElementById('gallery');
+      images.forEach(src => {
+        const fig = document.createElement('figure');
+        const box = document.createElement('div');
+        box.className = 'img-box';
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = "Fountain";
+        box.appendChild(img);
+        const cap = document.createElement('figcaption');
+        cap.textContent = "Fountain";
+        fig.appendChild(box);
+        fig.appendChild(cap);
+        g.appendChild(fig);
+      });
+    })();
+  </script>
 </body>
 </html>
