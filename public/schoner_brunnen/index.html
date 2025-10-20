@@ -23,48 +23,29 @@
       margin:0 auto;
       padding:44px 20px;
     }
-    h1{
-      margin-bottom:10px;
-      font-size:26px;
-    }
+    h1{margin-bottom:10px;font-size:26px}
     p{margin-bottom:14px}
     .muted{color:var(--muted)}
-
     .grid{
       display:grid;
       grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
       gap:14px;
       margin-top:22px;
     }
-
     figure{
       margin:0;
       border:2px solid var(--red);
       border-radius:8px;
       overflow:hidden;
       background:#0f0f12;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
     }
-
     .img-box{
       width:100%;
-      aspect-ratio:4/3;        /* усі фото однакової пропорції */
-      overflow:hidden;
+      aspect-ratio:4/3;   /* однакові пропорції для всіх карток */
       background:#111;
-      display:flex;
-      align-items:center;
-      justify-content:center;
     }
-
-    img{
-      width:100%;
-      height:100%;
-      object-fit:cover;        /* обрізає зайве */
-      display:block;
-    }
-
+    picture, img{display:block;width:100%;height:100%}
+    img{object-fit:cover}
     figcaption{
       text-align:center;
       font-size:13px;
@@ -79,40 +60,112 @@
     <p>Three turns — one wish. Many fountains look alike; only one hides the right lattice.</p>
     <p class="muted">All you have to do is look carefully.</p>
 
-    <section class="grid" id="gallery" aria-label="Fountain gallery"></section>
-  </main>
+    <section class="grid" aria-label="Fountain gallery">
+      <!-- 1 -->
+      <figure><div class="img-box"><picture>
+        <source type="image/webp" srcset="fountain_15_480.webp 480w, fountain_15_800.webp 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <source type="image/jpeg" srcset="fountain_15_480.jpg 480w, fountain_15_800.jpg 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <img src="fountain_15_480.jpg" alt="Fountain" decoding="async" fetchpriority="high">
+      </picture></div><figcaption>Fountain</figcaption></figure>
 
-  <script>
-    (function(){
-      const images=[
-        'fountain_15.jpg','fountain_01.jpg','fountain_02.jpg','fountain_03.jpg',
-        'fountain_04.jpg','fountain_05.jpg','fountain_06.jpg','fountain_07.jpg',
-        'fountain_08.jpg','fountain_09.jpg','fountain_10.jpg','fountain_11.jpg',
-        'fountain_12.jpg','fountain_13.jpg','fountain_14.jpg'
-      ];
-      // перемішати порядок
-      for(let i=images.length-1;i>0;i--){
-        const j=Math.floor(Math.random()*(i+1));
-        [images[i],images[j]]=[images[j],images[i]];
-      }
-      const g=document.getElementById('gallery');
-      images.forEach(name=>{
-        const fig=document.createElement('figure');
-        const box=document.createElement('div');
-        box.className='img-box';
-        const img=document.createElement('img');
-        img.loading='lazy';
-        img.decoding='async';
-        img.src=name;
-        img.alt='Fountain';
-        box.appendChild(img);
-        const cap=document.createElement('figcaption');
-        cap.textContent='Fountain';
-        fig.appendChild(box);
-        fig.appendChild(cap);
-        g.appendChild(fig);
-      });
-    })();
-  </script>
+      <!-- 2 -->
+      <figure><div class="img-box"><picture>
+        <source type="image/webp" srcset="fountain_01_480.webp 480w, fountain_01_800.webp 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <source type="image/jpeg" srcset="fountain_01_480.jpg 480w, fountain_01_800.jpg 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <img src="fountain_01_480.jpg" alt="Fountain" decoding="async" fetchpriority="high">
+      </picture></div><figcaption>Fountain</figcaption></figure>
+
+      <!-- 3 -->
+      <figure><div class="img-box"><picture>
+        <source type="image/webp" srcset="fountain_02_480.webp 480w, fountain_02_800.webp 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <source type="image/jpeg" srcset="fountain_02_480.jpg 480w, fountain_02_800.jpg 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <img src="fountain_02_480.jpg" alt="Fountain" decoding="async" fetchpriority="high">
+      </picture></div><figcaption>Fountain</figcaption></figure>
+
+      <!-- 4 -->
+      <figure><div class="img-box"><picture>
+        <source type="image/webp" srcset="fountain_03_480.webp 480w, fountain_03_800.webp 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <source type="image/jpeg" srcset="fountain_03_480.jpg 480w, fountain_03_800.jpg 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <img src="fountain_03_480.jpg" alt="Fountain" decoding="async" fetchpriority="high">
+      </picture></div><figcaption>Fountain</figcaption></figure>
+
+      <!-- 5 -->
+      <figure><div class="img-box"><picture>
+        <source type="image/webp" srcset="fountain_04_480.webp 480w, fountain_04_800.webp 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <source type="image/jpeg" srcset="fountain_04_480.jpg 480w, fountain_04_800.jpg 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <img src="fountain_04_480.jpg" alt="Fountain" decoding="async" fetchpriority="high">
+      </picture></div><figcaption>Fountain</figcaption></figure>
+
+      <!-- 6 -->
+      <figure><div class="img-box"><picture>
+        <source type="image/webp" srcset="fountain_05_480.webp 480w, fountain_05_800.webp 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <source type="image/jpeg" srcset="fountain_05_480.jpg 480w, fountain_05_800.jpg 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <img src="fountain_05_480.jpg" alt="Fountain" decoding="async" fetchpriority="high">
+      </picture></div><figcaption>Fountain</figcaption></figure>
+
+      <!-- 7 -->
+      <figure><div class="img-box"><picture>
+        <source type="image/webp" srcset="fountain_06_480.webp 480w, fountain_06_800.webp 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <source type="image/jpeg" srcset="fountain_06_480.jpg 480w, fountain_06_800.jpg 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <img src="fountain_06_480.jpg" alt="Fountain" decoding="async" loading="lazy">
+      </picture></div><figcaption>Fountain</figcaption></figure>
+
+      <!-- 8 -->
+      <figure><div class="img-box"><picture>
+        <source type="image/webp" srcset="fountain_07_480.webp 480w, fountain_07_800.webp 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <source type="image/jpeg" srcset="fountain_07_480.jpg 480w, fountain_07_800.jpg 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <img src="fountain_07_480.jpg" alt="Fountain" decoding="async" loading="lazy">
+      </picture></div><figcaption>Fountain</figcaption></figure>
+
+      <!-- 9 -->
+      <figure><div class="img-box"><picture>
+        <source type="image/webp" srcset="fountain_08_480.webp 480w, fountain_08_800.webp 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <source type="image/jpeg" srcset="fountain_08_480.jpg 480w, fountain_08_800.jpg 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <img src="fountain_08_480.jpg" alt="Fountain" decoding="async" loading="lazy">
+      </picture></div><figcaption>Fountain</figcaption></figure>
+
+      <!-- 10 -->
+      <figure><div class="img-box"><picture>
+        <source type="image/webp" srcset="fountain_09_480.webp 480w, fountain_09_800.webp 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <source type="image/jpeg" srcset="fountain_09_480.jpg 480w, fountain_09_800.jpg 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <img src="fountain_09_480.jpg" alt="Fountain" decoding="async" loading="lazy">
+      </picture></div><figcaption>Fountain</figcaption></figure>
+
+      <!-- 11 -->
+      <figure><div class="img-box"><picture>
+        <source type="image/webp" srcset="fountain_10_480.webp 480w, fountain_10_800.webp 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <source type="image/jpeg" srcset="fountain_10_480.jpg 480w, fountain_10_800.jpg 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <img src="fountain_10_480.jpg" alt="Fountain" decoding="async" loading="lazy">
+      </picture></div><figcaption>Fountain</figcaption></figure>
+
+      <!-- 12 -->
+      <figure><div class="img-box"><picture>
+        <source type="image/webp" srcset="fountain_11_480.webp 480w, fountain_11_800.webp 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <source type="image/jpeg" srcset="fountain_11_480.jpg 480w, fountain_11_800.jpg 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <img src="fountain_11_480.jpg" alt="Fountain" decoding="async" loading="lazy">
+      </picture></div><figcaption>Fountain</figcaption></figure>
+
+      <!-- 13 -->
+      <figure><div class="img-box"><picture>
+        <source type="image/webp" srcset="fountain_12_480.webp 480w, fountain_12_800.webp 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <source type="image/jpeg" srcset="fountain_12_480.jpg 480w, fountain_12_800.jpg 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <img src="fountain_12_480.jpg" alt="Fountain" decoding="async" loading="lazy">
+      </picture></div><figcaption>Fountain</figcaption></figure>
+
+      <!-- 14 -->
+      <figure><div class="img-box"><picture>
+        <source type="image/webp" srcset="fountain_13_480.webp 480w, fountain_13_800.webp 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <source type="image/jpeg" srcset="fountain_13_480.jpg 480w, fountain_13_800.jpg 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <img src="fountain_13_480.jpg" alt="Fountain" decoding="async" loading="lazy">
+      </picture></div><figcaption>Fountain</figcaption></figure>
+
+      <!-- 15 -->
+      <figure><div class="img-box"><picture>
+        <source type="image/webp" srcset="fountain_14_480.webp 480w, fountain_14_800.webp 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <source type="image/jpeg" srcset="fountain_14_480.jpg 480w, fountain_14_800.jpg 800w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
+        <img src="fountain_14_480.jpg" alt="Fountain" decoding="async" loading="lazy">
+      </picture></div><figcaption>Fountain</figcaption></figure>
+    </section>
+  </main>
 </body>
 </html>
