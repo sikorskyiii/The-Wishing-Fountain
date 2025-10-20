@@ -20,13 +20,16 @@
       margin-top:22px;
     }
     figure{
-      margin:0;border:2px solid var(--red);border-radius:8px;overflow:hidden;background:#0f0f12;
-      content-visibility:auto;                 /* швидший рендер поза в’юпортом */
-      contain-intrinsic-size: 300px 225px;     /* приблизний 4:3 для резерву */
+      margin:0;
+      border:2px solid var(--red);
+      border-radius:8px;
+      overflow:hidden;
+      background:#0f0f12;
+      content-visibility:auto;
+      contain-intrinsic-size: 300px 225px;
     }
     .img-box{width:100%;aspect-ratio:4/3;background:#111}
-    picture, img{display:block;width:100%;height:100%}
-    img{object-fit:cover}
+    img{display:block;width:100%;height:100%;object-fit:cover}
     figcaption{text-align:center;font-size:13px;color:var(--muted);padding:6px 0 5px}
   </style>
 </head>
@@ -37,125 +40,21 @@
     <p class="muted">All you have to do is look carefully.</p>
 
     <section class="grid" aria-label="Fountain gallery">
-      <!-- 1 -->
-      <figure><div class="img-box"><picture>
-        <source type="image/avif" srcset="fountain_15_320.avif 320w, fountain_15_640.avif 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/webp" srcset="fountain_15_320.webp 320w, fountain_15_640.webp 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/jpeg" srcset="fountain_15_320.jpg 320w, fountain_15_640.jpg 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <img src="fountain_15_320.jpg" alt="Fountain" width="960" height="720" decoding="async" fetchpriority="high">
-      </picture></div><figcaption>Fountain</figcaption></figure>
-
-      <!-- 2 -->
-      <figure><div class="img-box"><picture>
-        <source type="image/avif" srcset="fountain_01_320.avif 320w, fountain_01_640.avif 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/webp" srcset="fountain_01_320.webp 320w, fountain_01_640.webp 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/jpeg" srcset="fountain_01_320.jpg 320w, fountain_01_640.jpg 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <img src="fountain_01_320.jpg" alt="Fountain" width="960" height="720" decoding="async" fetchpriority="high">
-      </picture></div><figcaption>Fountain</figcaption></figure>
-
-      <!-- 3 -->
-      <figure><div class="img-box"><picture>
-        <source type="image/avif" srcset="fountain_02_320.avif 320w, fountain_02_640.avif 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/webp" srcset="fountain_02_320.webp 320w, fountain_02_640.webp 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/jpeg" srcset="fountain_02_320.jpg 320w, fountain_02_640.jpg 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <img src="fountain_02_320.jpg" alt="Fountain" width="960" height="720" decoding="async" fetchpriority="high">
-      </picture></div><figcaption>Fountain</figcaption></figure>
-
-      <!-- 4 -->
-      <figure><div class="img-box"><picture>
-        <source type="image/avif" srcset="fountain_03_320.avif 320w, fountain_03_640.avif 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/webp" srcset="fountain_03_320.webp 320w, fountain_03_640.webp 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/jpeg" srcset="fountain_03_320.jpg 320w, fountain_03_640.jpg 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <img src="fountain_03_320.jpg" alt="Fountain" width="960" height="720" decoding="async" fetchpriority="high">
-      </picture></div><figcaption>Fountain</figcaption></figure>
-
-      <!-- 5 -->
-      <figure><div class="img-box"><picture>
-        <source type="image/avif" srcset="fountain_04_320.avif 320w, fountain_04_640.avif 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/webp" srcset="fountain_04_320.webp 320w, fountain_04_640.webp 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/jpeg" srcset="fountain_04_320.jpg 320w, fountain_04_640.jpg 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <img src="fountain_04_320.jpg" alt="Fountain" width="960" height="720" decoding="async" loading="lazy">
-      </picture></div><figcaption>Fountain</figcaption></figure>
-
-      <!-- 6 -->
-      <figure><div class="img-box"><picture>
-        <source type="image/avif" srcset="fountain_05_320.avif 320w, fountain_05_640.avif 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/webp" srcset="fountain_05_320.webp 320w, fountain_05_640.webp 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/jpeg" srcset="fountain_05_320.jpg 320w, fountain_05_640.jpg 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <img src="fountain_05_320.jpg" alt="Fountain" width="960" height="720" decoding="async" loading="lazy">
-      </picture></div><figcaption>Fountain</figcaption></figure>
-
-      <!-- 7 -->
-      <figure><div class="img-box"><picture>
-        <source type="image/avif" srcset="fountain_06_320.avif 320w, fountain_06_640.avif 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/webp" srcset="fountain_06_320.webp 320w, fountain_06_640.webp 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/jpeg" srcset="fountain_06_320.jpg 320w, fountain_06_640.jpg 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <img src="fountain_06_320.jpg" alt="Fountain" width="960" height="720" decoding="async" loading="lazy">
-      </picture></div><figcaption>Fountain</figcaption></figure>
-
-      <!-- 8 -->
-      <figure><div class="img-box"><picture>
-        <source type="image/avif" srcset="fountain_07_320.avif 320w, fountain_07_640.avif 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/webp" srcset="fountain_07_320.webp 320w, fountain_07_640.webp 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/jpeg" srcset="fountain_07_320.jpg 320w, fountain_07_640.jpg 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <img src="fountain_07_320.jpg" alt="Fountain" width="960" height="720" decoding="async" loading="lazy">
-      </picture></div><figcaption>Fountain</figcaption></figure>
-
-      <!-- 9 -->
-      <figure><div class="img-box"><picture>
-        <source type="image/avif" srcset="fountain_08_320.avif 320w, fountain_08_640.avif 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/webp" srcset="fountain_08_320.webp 320w, fountain_08_640.webp 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/jpeg" srcset="fountain_08_320.jpg 320w, fountain_08_640.jpg 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <img src="fountain_08_320.jpg" alt="Fountain" width="960" height="720" decoding="async" loading="lazy">
-      </picture></div><figcaption>Fountain</figcaption></figure>
-
-      <!-- 10 -->
-      <figure><div class="img-box"><picture>
-        <source type="image/avif" srcset="fountain_09_320.avif 320w, fountain_09_640.avif 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/webp" srcset="fountain_09_320.webp 320w, fountain_09_640.webp 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/jpeg" srcset="fountain_09_320.jpg 320w, fountain_09_640.jpg 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <img src="fountain_09_320.jpg" alt="Fountain" width="960" height="720" decoding="async" loading="lazy">
-      </picture></div><figcaption>Fountain</figcaption></figure>
-
-      <!-- 11 -->
-      <figure><div class="img-box"><picture>
-        <source type="image/avif" srcset="fountain_10_320.avif 320w, fountain_10_640.avif 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/webp" srcset="fountain_10_320.webp 320w, fountain_10_640.webp 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/jpeg" srcset="fountain_10_320.jpg 320w, fountain_10_640.jpg 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <img src="fountain_10_320.jpg" alt="Fountain" width="960" height="720" decoding="async" loading="lazy">
-      </picture></div><figcaption>Fountain</figcaption></figure>
-
-      <!-- 12 -->
-      <figure><div class="img-box"><picture>
-        <source type="image/avif" srcset="fountain_11_320.avif 320w, fountain_11_640.avif 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/webp" srcset="fountain_11_320.webp 320w, fountain_11_640.webp 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/jpeg" srcset="fountain_11_320.jpg 320w, fountain_11_640.jpg 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <img src="fountain_11_320.jpg" alt="Fountain" width="960" height="720" decoding="async" loading="lazy">
-      </picture></div><figcaption>Fountain</figcaption></figure>
-
-      <!-- 13 -->
-      <figure><div class="img-box"><picture>
-        <source type="image/avif" srcset="fountain_12_320.avif 320w, fountain_12_640.avif 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/webp" srcset="fountain_12_320.webp 320w, fountain_12_640.webp 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/jpeg" srcset="fountain_12_320.jpg 320w, fountain_12_640.jpg 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <img src="fountain_12_320.jpg" alt="Fountain" width="960" height="720" decoding="async" loading="lazy">
-      </picture></div><figcaption>Fountain</figcaption></figure>
-
-      <!-- 14 -->
-      <figure><div class="img-box"><picture>
-        <source type="image/avif" srcset="fountain_13_320.avif 320w, fountain_13_640.avif 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/webp" srcset="fountain_13_320.webp 320w, fountain_13_640.webp 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/jpeg" srcset="fountain_13_320.jpg 320w, fountain_13_640.jpg 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <img src="fountain_13_320.jpg" alt="Fountain" width="960" height="720" decoding="async" loading="lazy">
-      </picture></div><figcaption>Fountain</figcaption></figure>
-
-      <!-- 15 -->
-      <figure><div class="img-box"><picture>
-        <source type="image/avif" srcset="fountain_14_320.avif 320w, fountain_14_640.avif 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/webp" srcset="fountain_14_320.webp 320w, fountain_14_640.webp 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <source type="image/jpeg" srcset="fountain_14_320.jpg 320w, fountain_14_640.jpg 640w" sizes="(min-width:1100px) 220px, (min-width:700px) 33vw, 45vw">
-        <img src="fountain_14_320.jpg" alt="Fountain" width="960" height="720" decoding="async" loading="lazy">
-      </picture></div><figcaption>Fountain</figcaption></figure>
+      <figure><div class="img-box"><img src="fountain_01_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
+      <figure><div class="img-box"><img src="fountain_02_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
+      <figure><div class="img-box"><img src="fountain_03_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
+      <figure><div class="img-box"><img src="fountain_04_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
+      <figure><div class="img-box"><img src="fountain_05_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
+      <figure><div class="img-box"><img src="fountain_06_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
+      <figure><div class="img-box"><img src="fountain_07_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
+      <figure><div class="img-box"><img src="fountain_08_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
+      <figure><div class="img-box"><img src="fountain_09_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
+      <figure><div class="img-box"><img src="fountain_10_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
+      <figure><div class="img-box"><img src="fountain_11_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
+      <figure><div class="img-box"><img src="fountain_12_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
+      <figure><div class="img-box"><img src="fountain_13_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
+      <figure><div class="img-box"><img src="fountain_14_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
+      <figure><div class="img-box"><img src="fountain_15_320.jpg" alt="Fountain" loading="lazy"></div><figcaption>Fountain</figcaption></figure>
     </section>
   </main>
 </body>
