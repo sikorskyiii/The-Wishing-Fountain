@@ -29,31 +29,47 @@
     }
     p{margin-bottom:14px}
     .muted{color:var(--muted)}
+
     .grid{
       display:grid;
       grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-      gap:12px;
-      margin-top:20px;
+      gap:14px;
+      margin-top:22px;
     }
+
     figure{
       margin:0;
       border:2px solid var(--red);
       border-radius:8px;
       overflow:hidden;
       background:#0f0f12;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
     }
-    img{
-      display:block;
+
+    .img-box{
       width:100%;
-      height:auto;
-      object-fit:cover;
+      aspect-ratio:4/3;        /* усі фото однакової пропорції */
+      overflow:hidden;
       background:#111;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
+
+    img{
+      width:100%;
+      height:100%;
+      object-fit:cover;        /* обрізає зайве */
+      display:block;
+    }
+
     figcaption{
       text-align:center;
       font-size:13px;
       color:var(--muted);
-      padding:6px 0 4px;
+      padding:6px 0 5px;
     }
   </style>
 </head>
@@ -74,7 +90,7 @@
         'fountain_08.jpg','fountain_09.jpg','fountain_10.jpg','fountain_11.jpg',
         'fountain_12.jpg','fountain_13.jpg','fountain_14.jpg'
       ];
-      // shuffle
+      // перемішати порядок
       for(let i=images.length-1;i>0;i--){
         const j=Math.floor(Math.random()*(i+1));
         [images[i],images[j]]=[images[j],images[i]];
@@ -82,14 +98,17 @@
       const g=document.getElementById('gallery');
       images.forEach(name=>{
         const fig=document.createElement('figure');
+        const box=document.createElement('div');
+        box.className='img-box';
         const img=document.createElement('img');
         img.loading='lazy';
         img.decoding='async';
         img.src=name;
         img.alt='Fountain';
+        box.appendChild(img);
         const cap=document.createElement('figcaption');
         cap.textContent='Fountain';
-        fig.appendChild(img);
+        fig.appendChild(box);
         fig.appendChild(cap);
         g.appendChild(fig);
       });
