@@ -6,147 +6,49 @@
   <title>Wishing Ring — lattice gallery</title>
   <meta name="description" content="Find the right lattice among many fountains." />
   <style>
-    :root{--bg:#0a0a0a;--fg:#e6e6e6;--muted:#9a9a9a;--red:#c1121f;--red-dim:#7a0b12;--ok:#18c29c}
+    :root{--bg:#0a0a0a;--fg:#e6e6e6}
     *{box-sizing:border-box}
     body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif}
     .wrap{max-width:1100px;margin:0 auto;padding:44px 20px}
     h1{margin:0 0 10px;font-size:26px}
     p{margin:0 0 14px}
-    .muted{color:var(--muted)}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:12px}
-    .item{position:relative;border:2px solid var(--red-dim);border-radius:10px;overflow:hidden;background:#0f0f12;transition:transform .12s ease,box-shadow .12s ease,border-color .12s ease;cursor:pointer}
-    .item:hover{transform:translateY(-2px);box-shadow:0 0 0 1px #000,0 0 24px rgba(193,18,31,.18)}
-    .ph{width:100%;aspect-ratio:4/3;background:#111}
-    .cap{padding:8px 10px;font-size:14px;color:var(--muted)}
-    .wrong{animation:shake .15s 2}
-    @keyframes shake{0%{transform:translateX(0)}25%{transform:translateX(-4px)}50%{transform:translateX(4px)}75%{transform:translateX(-3px)}100%{transform:translateX(0)}}
-    .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#111;color:#fff;border:1px solid var(--ok);padding:10px 14px;border-radius:8px;box-shadow:0 0 0 1px #000,0 8px 30px rgba(0,0,0,.35);font-size:14px;opacity:0;pointer-events:none;transition:opacity .18s ease}
-    .toast.show{opacity:1}
-    .accent{color:var(--red)}
-    .img{filter:blur(8px);transform:scale(1.02);transition:filter .25s ease, transform .25s ease}
-    .img.ready{filter:blur(0);transform:scale(1)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:16px}
+    .item img{display:block;width:100%;height:auto;border-radius:6px;cursor:pointer;object-fit:cover}
+    .cap{padding:4px 6px;font-size:13px;color:#999;text-align:center}
   </style>
 </head>
 <body>
   <main class="wrap">
     <h1>Find the ring</h1>
     <p>Three turns — one wish. Many fountains look alike; only one hides the right lattice.</p>
-    <p class="muted">When you identify the correct one, remember: the true key is the <span class="accent">name of an observatory</span>.</p>
 
     <section class="grid" id="gallery" aria-label="Fountain gallery"></section>
-    <div class="toast" id="toast" role="status" aria-live="polite">Right lattice found. Think of the observatory.</div>
   </main>
 
   <script>
     (function(){
-      var names = [
-        'fountain_15.jpg',
-        'fountain_01.jpg','fountain_02.jpg','fountain_03.jpg',
-        'fountain_04.jpg','fountain_05.jpg','fountain_06.jpg',
-        'fountain_07.jpg','fountain_08.jpg','fountain_09.jpg',
-        'fountain_10.jpg','fountain_11.jpg','fountain_12.jpg',
-        'fountain_13.jpg','fountain_14.jpg'
+      const images=[
+        'fountain_15.jpg','fountain_01.jpg','fountain_02.jpg','fountain_03.jpg',
+        'fountain_04.jpg','fountain_05.jpg','fountain_06.jpg','fountain_07.jpg',
+        'fountain_08.jpg','fountain_09.jpg','fountain_10.jpg','fountain_11.jpg',
+        'fountain_12.jpg','fountain_13.jpg','fountain_14.jpg'
       ];
-
-      for (let i=names.length-1;i>0;i--){
-        const j=Math.floor(Math.random()*(i+1));
-        [names[i],names[j]]=[names[j],names[i]];
-      }
-
-      var gallery = document.getElementById('gallery');
-      var toast = document.getElementById('toast');
-
-      function isCorrectSrc(src){ return /(^|\/)fountain_15\.jpg(\?.*)?$/i.test(src); }
-
-      function showToast(msg){
-        toast.textContent = msg;
-        toast.classList.add('show');
-        setTimeout(function(){ toast.classList.remove('show'); }, 1400);
-      }
-      function thumbOf(name){ return 'thumbs/' + name.replace(/\.jpe?g$/i,'_480.jpg'); }
-      function webpThumbOf(name){ return 'thumbs/' + name.replace(/\.jpe?g$/i,'_480.webp'); }
-      function mediumOf(name){ return name.replace(/\.jpe?g$/i,'_800.jpg'); }
-      function webpMediumOf(name){ return name.replace(/\.jpe?g$/i,'_800.webp'); }
-      function fullOf(name){ return name; } 
-
-      names.forEach(function(name){
-        var fig = document.createElement('figure');
-        fig.className = 'item';
-        fig.setAttribute('tabindex','0');
-        var ph = document.createElement('div');
-        ph.className = 'ph';
-
-        var picture = document.createElement('picture');
-
-        var srcWebp = document.createElement('source');
-        srcWebp.type = 'image/webp';
-        srcWebp.srcset = webpThumbOf(name);
-        srcWebp.sizes = '(max-width: 600px) 45vw, 220px';
-
-        var srcJpg = document.createElement('source');
-        srcJpg.type = 'image/jpeg';
-        srcJpg.srcset = thumbOf(name);
-        srcJpg.sizes = '(max-width: 600px) 45vw, 220px';
-
-        var img = document.createElement('img');
-        img.className = 'img';
-        img.loading = 'lazy';
-        img.decoding = 'async';
-        img.alt = 'Fountain';
-
-        img.src = thumbOf(name);
-
-        img.dataset.mediumJpg = mediumOf(name);
-        img.dataset.mediumWebp = webpMediumOf(name);
-        img.dataset.full = fullOf(name);
-
-        picture.appendChild(srcWebp);
-        picture.appendChild(srcJpg);
-        picture.appendChild(img);
-
-        var cap = document.createElement('figcaption');
-        cap.className = 'cap';
-        cap.textContent = 'Fountain';
-
-        fig.appendChild(ph);
-        fig.appendChild(picture);
-        fig.appendChild(cap);
-
-        function onPick(){
-          var used = img.currentSrc || img.src;
-          if (isCorrectSrc(used) || isCorrectSrc(img.dataset.full)) {
-            fig.style.borderColor = 'var(--ok)';
-            showToast('Right lattice found. Think of the observatory.');
-          } else {
-            fig.classList.remove('wrong'); void fig.offsetWidth; fig.classList.add('wrong');
-            fig.style.borderColor = 'var(--red)';
-          }
-        }
-
-        fig.addEventListener('click', onPick);
-        fig.addEventListener('keydown', function(e){
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onPick(); }
-        });
-
-        gallery.appendChild(fig);
-      });
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if (entry.isIntersecting) {
-            var pic = entry.target.querySelector('picture');
-            var img = pic.querySelector('img');
-            var s1 = pic.querySelector('source[type="image/webp"]');
-            var s2 = pic.querySelector('source[type="image/jpeg"]');
-            if (s1) s1.srcset = img.dataset.mediumWebp;
-            if (s2) s2.srcset = img.dataset.mediumJpg;
-            img.addEventListener('load', function onL(){ img.classList.add('ready'); img.removeEventListener('load', onL); }, {once:true});
-            io.unobserve(entry.target);
-          }
-        });
-      }, { rootMargin: '200px 0px' });
-
-      document.querySelectorAll('.item').forEach(function(card){
-        io.observe(card);
+      // shuffle
+      for(let i=images.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[images[i],images[j]]=[images[j],images[i]];}
+      const g=document.getElementById('gallery');
+      images.forEach(name=>{
+        const fig=document.createElement('figure');
+        fig.className='item';
+        const img=document.createElement('img');
+        img.loading='lazy';
+        img.decoding='async';
+        img.src=name;
+        img.alt='Fountain';
+        const cap=document.createElement('figcaption');
+        cap.className='cap'; cap.textContent='Fountain';
+        fig.appendChild(img); fig.appendChild(cap);
+        fig.onclick=()=>{ if(name==='fountain_15.jpg'){ window.location.href='../next_stage/'; } };
+        g.appendChild(fig);
       });
     })();
   </script>
