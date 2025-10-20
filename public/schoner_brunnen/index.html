@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Wishing Fountain — OSINT Challenge</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    body{margin:0;background:#0b0b0c;color:#f2f3f5;font:16px/1.65 Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+    .wrap{max-width:880px;margin:48px auto;padding:0 16px}
+    h1{margin:0 0 8px;font-weight:800;font-size:34px;letter-spacing:.3px;color:#ff2b2b}
+    .lead{color:#b8bcc6;margin:0 0 18px}
+    p{margin:0 0 12px}
+    .muted{color:#b8bcc6;font-size:12px;margin-top:10px}
+    .ring{font-style:italic; position:relative; cursor:default}
+    .ring::after{content:""; position:absolute; inset:-2px -4px; border:1px dashed transparent;} /* декоративно */
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>The Wishing Fountain</h1>
+    <p class="lead">OSINT challenge · Nuremberg, Germany</p>
+
+    <p><strong>S</strong>ome say the “Beautiful Fountain,” a 14-meter Gothic work from the 14th century, was never meant for the square at all.</p>
+    <p><strong>C</strong>enturies of footsteps blurred the plans, but the trace remains.</p>
+    <p><strong>H</strong>idden in its iron lattice is a small golden <span class="ring" id="ring">ring</span>; locals whisper that three turns and a wish may tilt the odds.</p>
+    <p><strong>O</strong>n quiet evenings, the market keeps its counsel.</p>
+    <p><strong>N</strong>ame, place, and purpose still align for those who look.</p>
+    <p><strong>E</strong>verything you need is in plain sight.</p>
+    <p><strong>R</strong>eading the signs is part of the craft.</p>
+
+    <p><strong>B</strong>etween drawings and stone, the answer waits.</p>
+    <p><strong>R</strong>emember: work with originals, not previews.</p>
+    <p><strong>U</strong>nder iron and habit, clues survive.</p>
+    <p><strong>N</strong>uremberg keeps good secrets.</p>
+    <p><strong>N</strong>o leaps of faith required.</p>
+    <p><strong>E</strong>ach step reveals the next.</p>
+    <p><strong>N</strong>ow, follow the obvious.</p>
+
+    <p class="muted">No links on this page.</p>
+  </main>
+
+  <script>
+    (function(){
+      const el = document.getElementById('ring');
+      let clicks = 0, timer = null;
+      el.addEventListener('click', () => {
+        clicks++;
+        clearTimeout(timer);
+        timer = setTimeout(() => { clicks = 0; }, 600); 
+        if (clicks === 3) { location.href = 'wishing_ring/schoner_brunnen/'; }
+      });
+    })();
+  </script>
+</body>
+</html>

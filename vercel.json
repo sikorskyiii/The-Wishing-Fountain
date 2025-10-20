@@ -1,0 +1,8 @@
+{
+  "headers": [
+    {
+      "source": "/",
+      "headers": [{ "key": "X-Next", "value": "/schoner_brunnen/" }]
+    }
+  ]
+}
