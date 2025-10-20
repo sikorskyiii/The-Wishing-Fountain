@@ -1,56 +1,39 @@
 <!doctype html>
-<html lang="en">
+<html lang="uk">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The Wishing Fountain — OSINT Challenge</title>
-  <meta name="robots" content="noindex, nofollow" />
+  <title>Wishing Ring</title>
+  <meta name="description" content="Шукай кільце, зроби три оберти, загадай бажання." />
+  <!-- КЛЮЧ ДО НАСТУПНОГО ЕТАПУ (остаточний): Kleť Observatory -->
+  <meta name="hint" content="Key: Kleť Observatory" />
   <style>
-    body{margin:0;background:#0b0b0c;color:#f2f3f5;font:16px/1.65 Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
-    .wrap{max-width:880px;margin:48px auto;padding:0 16px}
-    h1{margin:0 0 8px;font-weight:800;font-size:34px;letter-spacing:.3px;color:#ff2b2b}
-    .lead{color:#b8bcc6;margin:0 0 18px}
-    p{margin:0 0 12px}
-    .muted{color:#b8bcc6;font-size:12px;margin-top:10px}
-    .ring{font-style:italic; position:relative; cursor:default}
-    .ring::after{content:""; position:absolute; inset:-2px -4px; border:1px dashed transparent;} /* декоративно */
+    body{font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;margin:0;background:#0b0b10;color:#e9e9f0}
+    .wrap{max-width:900px;margin:0 auto;padding:40px 20px}
+    figure{margin:0}
+    img{max-width:100%;height:auto;border-radius:10px;display:block}
+    figcaption{opacity:.7;margin-top:8px}
+    .note{margin-top:14px;opacity:.9}
+    a{color:#9aa7ff}
   </style>
 </head>
 <body>
   <main class="wrap">
-    <h1>The Wishing Fountain</h1>
-    <p class="lead">OSINT challenge · Nuremberg, Germany</p>
+    <h1>Find the ring</h1>
 
-    <p><strong>S</strong>ome say the “Beautiful Fountain,” a 14-meter Gothic work from the 14th century, was never meant for the square at all.</p>
-    <p><strong>C</strong>enturies of footsteps blurred the plans, but the trace remains.</p>
-    <p><strong>H</strong>idden in its iron lattice is a small golden <span class="ring" id="ring">ring</span>; locals whisper that three turns and a wish may tilt the odds.</p>
-    <p><strong>O</strong>n quiet evenings, the market keeps its counsel.</p>
-    <p><strong>N</strong>ame, place, and purpose still align for those who look.</p>
-    <p><strong>E</strong>verything you need is in plain sight.</p>
-    <p><strong>R</strong>eading the signs is part of the craft.</p>
+    <figure>
+      <img src="./wishing_ring.jpg" alt="Iron lattice with a small golden ring hidden within" />
+      <figcaption>Три оберти — одне бажання. Але справжній шлях веде далі.</figcaption>
+    </figure>
 
-    <p><strong>B</strong>etween drawings and stone, the answer waits.</p>
-    <p><strong>R</strong>emember: work with originals, not previews.</p>
-    <p><strong>U</strong>nder iron and habit, clues survive.</p>
-    <p><strong>N</strong>uremberg keeps good secrets.</p>
-    <p><strong>N</strong>o leaps of faith required.</p>
-    <p><strong>E</strong>ach step reveals the next.</p>
-    <p><strong>N</strong>ow, follow the obvious.</p>
+    <p class="note">
+      Історії інколи приховують відповідь у назвах місць, що спостерігають за небом.
+      Хто здогадується — той рухається далі.
+    </p>
 
-    <p class="muted">No links on this page.</p>
+    <p><a href="../">← назад</a></p>
   </main>
 
-  <script>
-    (function(){
-      const el = document.getElementById('ring');
-      let clicks = 0, timer = null;
-      el.addEventListener('click', () => {
-        clicks++;
-        clearTimeout(timer);
-        timer = setTimeout(() => { clicks = 0; }, 600); 
-        if (clicks === 3) { location.href = 'wishing_ring/schoner_brunnen/'; }
-      });
-    })();
-  </script>
+  <noscript>Порада: увімкни JavaScript, якщо очікуєш додаткові підказки, але тут вони не потрібні.</noscript>
 </body>
 </html>
